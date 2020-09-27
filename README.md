@@ -14,4 +14,4 @@ Just to be able to quickly fix bugs, a hotfix branch will be created from the ma
 
 This approach to application development will allow you to create a stable version.
 
-![](https://ibb.co/z2D28Js)
+![img](https://ibb.co/z2D28Js)
