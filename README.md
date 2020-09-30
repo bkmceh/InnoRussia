@@ -1,4 +1,4 @@
-# InnoRussia
+# InnoRussian
 InnoRussia project for the FSE subject
 
 Git Workflow
