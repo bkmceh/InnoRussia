@@ -164,34 +164,68 @@ class _MenuState extends State<Menu> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        appBar: PreferredSize(
+        /*appBar: PreferredSize(
           preferredSize: Size.fromHeight(40.0),
           child: AppBar(
               elevation: 2,
               shadowColor: Colors.white,
               title: Text("Categories"),
               centerTitle: true,
-              backgroundColor: hexToColor("#3D3F70"),
+              backgroundColor: hexToColor("#796CBE"),
               automaticallyImplyLeading: false),
-        ),
+        ),*/
         body: SafeArea(
           child: CustomScrollView(
             slivers: <Widget>[
               SliverAppBar(
-                title: Column(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: [
-                    Text('Hey, what would you like to learn today?'),
-                  ],
+                title: Text('Categories',
+                style: TextStyle(
+                    color: hexToColor('#FFFFFF'),
+                    fontSize: 28,
+                  ),
                 ),
                 centerTitle: true,
-                backgroundColor: hexToColor("#3D3F70"),
-                pinned: false,
-                expandedHeight: 130.0,
-                snap: false,
-                floating: true,
+                backgroundColor: hexToColor("#796CBE"),
+                pinned: true,
+                expandedHeight: 120,
+                flexibleSpace: FlexibleSpaceBar(
+                  background: Container(
+                    padding: EdgeInsets.only(top: 40),
+                    child: Column(
+                      children: [
+                        Text('Hey, what would you like to learn today?',
+                          style: TextStyle(
+                            color: hexToColor('#FFFFFF'),
+                            fontSize: 20,
+                          ),
+                        ),
+                        Container(
+                            padding: EdgeInsets.all(6),
+                            child: TextField(
+                              style: TextStyle(
+                                color: hexToColor('#707070'),
+                                fontSize: 14,
+                              ),
+                              decoration: InputDecoration(
+                                  border: OutlineInputBorder(
+                                    borderRadius: BorderRadius.circular(14),
+                                    borderSide: BorderSide(color: hexToColor('#FFFFFF')),
+                                  ),
+                                  hintText: 'Type to search',
+                                  hintStyle: TextStyle(
+                                      color: hexToColor('#707070')),
+                                  isDense: true,
+                                  contentPadding: EdgeInsets.all(7),
+                                  filled: true,
+                                  fillColor: hexToColor('#FFFFFF'),
+                              ),
+                            )
+                        )
+                      ],
+                    ),
+                  ),
+                ),
                 shadowColor: Colors.black,
-                forceElevated: true,
                 elevation: 8.0,
               ),
               SliverGrid.count(
