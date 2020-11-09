@@ -13,12 +13,13 @@ class _MenuState extends State<Menu> {
   final categories =
   [
     Padding(
-      padding: const EdgeInsets.all(8.0),
+      padding: const EdgeInsets.only(left: 18.0, right: 9, top: 18,),
       child: Card(
         shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(15)),
         shadowColor: Colors.black,
         elevation: 5.0,
         child: InkWell(
+          borderRadius: BorderRadius.circular(15),
           onTap: () {},
           child: Column(mainAxisAlignment: MainAxisAlignment.center, children: [
             Icon(
@@ -34,12 +35,13 @@ class _MenuState extends State<Menu> {
       ),
     ),
     Padding(
-      padding: const EdgeInsets.all(8.0),
+      padding: const EdgeInsets.only(left: 9.0, right: 18, top: 18,),
       child: Card(
         shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(15)),
         shadowColor: Colors.black,
         elevation: 5.0,
         child: InkWell(
+          borderRadius: BorderRadius.circular(15),
           onTap: () {},
           child: Column(mainAxisAlignment: MainAxisAlignment.center, children: [
             Icon(
@@ -55,12 +57,13 @@ class _MenuState extends State<Menu> {
       ),
     ),
     Padding(
-      padding: const EdgeInsets.all(8.0),
+      padding: const EdgeInsets.only(left: 18.0, right: 9, top: 18,),
       child: Card(
         shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(15)),
         shadowColor: Colors.black,
         elevation: 5.0,
         child: InkWell(
+          borderRadius: BorderRadius.circular(15),
           onTap: () {},
           child: Column(mainAxisAlignment: MainAxisAlignment.center, children: [
             Icon(
@@ -76,12 +79,13 @@ class _MenuState extends State<Menu> {
       ),
     ),
     Padding(
-      padding: const EdgeInsets.all(8.0),
+      padding: const EdgeInsets.only(left: 9.0, right: 18, top: 18,),
       child: Card(
         shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(15)),
         shadowColor: Colors.black,
         elevation: 5.0,
         child: InkWell(
+          borderRadius: BorderRadius.circular(15),
           onTap: () {},
           child: Column(mainAxisAlignment: MainAxisAlignment.center, children: [
             Icon(
@@ -97,12 +101,13 @@ class _MenuState extends State<Menu> {
       ),
     ),
     Padding(
-      padding: const EdgeInsets.all(8.0),
+      padding: const EdgeInsets.only(left: 18.0, right: 9, top: 18,),
       child: Card(
         shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(15)),
         shadowColor: Colors.black,
         elevation: 5.0,
         child: InkWell(
+          borderRadius: BorderRadius.circular(15),
           onTap: () {},
           child: Column(mainAxisAlignment: MainAxisAlignment.center, children: [
             Icon(
@@ -118,12 +123,13 @@ class _MenuState extends State<Menu> {
       ),
     ),
     Padding(
-      padding: const EdgeInsets.all(8.0),
+      padding: const EdgeInsets.only(left: 9.0, right: 18, top: 18,),
       child: Card(
         shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(15)),
         shadowColor: Colors.black,
         elevation: 5.0,
         child: InkWell(
+          borderRadius: BorderRadius.circular(15),
           onTap: () {},
           child: Column(mainAxisAlignment: MainAxisAlignment.center, children: [
             Icon(
@@ -139,12 +145,13 @@ class _MenuState extends State<Menu> {
       ),
     ),
     Padding(
-      padding: const EdgeInsets.all(8.0),
+      padding: const EdgeInsets.only(left: 18.0, right: 9, top: 18, bottom: 18),
       child: Card(
         shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(15)),
         shadowColor: Colors.black,
         elevation: 5.0,
         child: InkWell(
+          borderRadius: BorderRadius.circular(15),
           onTap: () {},
           child: Column(mainAxisAlignment: MainAxisAlignment.center, children: [
             Icon(
@@ -164,18 +171,7 @@ class _MenuState extends State<Menu> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        /*appBar: PreferredSize(
-          preferredSize: Size.fromHeight(40.0),
-          child: AppBar(
-              elevation: 2,
-              shadowColor: Colors.white,
-              title: Text("Categories"),
-              centerTitle: true,
-              backgroundColor: hexToColor("#796CBE"),
-              automaticallyImplyLeading: false),
-        ),*/
-        body: SafeArea(
-          child: CustomScrollView(
+        body: CustomScrollView(
             slivers: <Widget>[
               SliverAppBar(
                 title: Text('Categories',
@@ -187,11 +183,12 @@ class _MenuState extends State<Menu> {
                 centerTitle: true,
                 backgroundColor: hexToColor("#796CBE"),
                 pinned: true,
-                expandedHeight: 120,
+                expandedHeight: 160,
                 flexibleSpace: FlexibleSpaceBar(
                   background: Container(
-                    padding: EdgeInsets.only(top: 40),
+                    padding: EdgeInsets.only(top: 60),
                     child: Column(
+                      mainAxisAlignment: MainAxisAlignment.center,
                       children: [
                         Text('Hey, what would you like to learn today?',
                           style: TextStyle(
@@ -201,23 +198,26 @@ class _MenuState extends State<Menu> {
                         ),
                         Container(
                             padding: EdgeInsets.all(6),
-                            child: TextField(
-                              style: TextStyle(
-                                color: hexToColor('#707070'),
-                                fontSize: 14,
-                              ),
-                              decoration: InputDecoration(
-                                  border: OutlineInputBorder(
-                                    borderRadius: BorderRadius.circular(14),
-                                    borderSide: BorderSide(color: hexToColor('#FFFFFF')),
-                                  ),
-                                  hintText: 'Type to search',
-                                  hintStyle: TextStyle(
-                                      color: hexToColor('#707070')),
-                                  isDense: true,
-                                  contentPadding: EdgeInsets.all(7),
-                                  filled: true,
-                                  fillColor: hexToColor('#FFFFFF'),
+                            child: Padding(
+                              padding: const EdgeInsets.only(left: 13, right: 13, top: 10),
+                              child: TextField(
+                                style: TextStyle(
+                                  color: hexToColor('#707070'),
+                                  fontSize: 16,
+                                ),
+                                decoration: InputDecoration(
+                                    border: OutlineInputBorder(
+                                      borderRadius: BorderRadius.circular(15),
+                                      borderSide: BorderSide(color: hexToColor('#FFFFFF')),
+                                    ),
+                                    hintText: 'Type to search',
+                                    hintStyle: TextStyle(
+                                        color: hexToColor('#707070')),
+                                    isDense: true,
+                                    contentPadding: EdgeInsets.all(10),
+                                    filled: true,
+                                    fillColor: hexToColor('#FFFFFF'),
+                                ),
                               ),
                             )
                         )
@@ -234,7 +234,7 @@ class _MenuState extends State<Menu> {
               ),
             ],
           ),
-        ));
+        );
   }
 }
 
