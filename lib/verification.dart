@@ -110,12 +110,6 @@ class _VerificationState extends State<Verification> {
   void _sendDataToServer() async {
     var response = await http.post(urlForCode,
         body: {'code': _code}, headers: {'Cookie': _user.getSessionId()});
-    // String status = response.body;
-    // if (status.substring(1, 12) == '"status": 0') {
-    //   return Text("Error code", style: TextStyle(
-    //     color: Colors.red
-    //   ),);
-    // }
 
   }
 }

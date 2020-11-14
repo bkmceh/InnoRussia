@@ -1,6 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
+import 'package:email_validator/email_validator.dart';
 
 Color hexToColor(String code) {
   return new Color(int.parse(code.substring(1, 7), radix: 16) + 0xFF000000);
@@ -27,50 +28,53 @@ class _SignInState extends State<SignIn> {
         children: [
           Align(
               alignment: Alignment(
-                  -69.5 / (0.5 * MediaQuery.of(context).size.width), 0),
+                  -69.5 / (0.5 * MediaQuery
+                      .of(context)
+                      .size
+                      .width), 0),
               child: CustomPaint(painter: Book())),
           _logo(),
           (_showLogin
               ? SingleChildScrollView(
-                  child: Column(
-                    children: [
-                      _form("LOGIN", _buttonAction),
-                      Padding(
-                        padding: EdgeInsets.all(10),
-                        child: GestureDetector(
-                          child: Text(
-                            "Not registered yet? Register!",
-                            style: TextStyle(fontSize: 20, color: Colors.white),
-                          ),
-                          onTap: () {
-                            setState(() {
-                              _showLogin = false;
-                            });
-                          },
-                        ),
-                      )
-                    ],
+            child: Column(
+              children: [
+                _form("REGISTER", _buttonAction),
+                Padding(
+                  padding: EdgeInsets.all(10),
+                  child: GestureDetector(
+                    child: Text(
+                      "Already registered? Login!",
+                      style: TextStyle(fontSize: 20, color: Colors.white),
+                    ),
+                    onTap: () {
+                      setState(() {
+                        _showLogin = false;
+                      });
+                    },
                   ),
                 )
+              ],
+            ),
+          )
               : Column(
-                  children: [
-                    _form("REGISTER", _buttonAction),
-                    Padding(
-                      padding: EdgeInsets.all(10),
-                      child: GestureDetector(
-                        child: Text(
-                          "Already registered? Login!",
-                          style: TextStyle(fontSize: 20, color: Colors.white),
-                        ),
-                        onTap: () {
-                          setState(() {
-                            _showLogin = true;
-                          });
-                        },
-                      ),
-                    )
-                  ],
-                )),
+            children: [
+              _form("LOGIN", _buttonAction),
+              Padding(
+                padding: EdgeInsets.all(10),
+                child: GestureDetector(
+                  child: Text(
+                    "Not registered yet? Register!",
+                    style: TextStyle(fontSize: 20, color: Colors.white),
+                  ),
+                  onTap: () {
+                    setState(() {
+                      _showLogin = true;
+                    });
+                  },
+                ),
+              )
+            ],
+          )),
           // _form("LOGIN", _buttonAction),
         ],
       ),
@@ -110,7 +114,10 @@ class _SignInState extends State<SignIn> {
             ),
             child: Container(
               height: 50,
-              width: MediaQuery.of(context).size.width,
+              width: MediaQuery
+                  .of(context)
+                  .size
+                  .width,
               child: _button(label, func),
             ),
           )
@@ -166,30 +173,23 @@ class _SignInState extends State<SignIn> {
   void _buttonAction() {
     _email = _emailController.text;
 
-    _sendEmailToServer();
-    // _emailController.clear();
+    if (EmailValidator.validate(_email) == true) {
+      _sendEmailToServer();
+      UserData _user = UserData(_email, _sessionId);
+      Navigator.of(context).pushNamed("/verification", arguments: _user);
+    } else {
+
+      print("Error");
+      _emailController.clear();
+    }
   }
 
   void _sendEmailToServer() async {
     var response = await http.post(url_auth, body: {'email': _email});
-    print(response.body);
-    if (response.statusCode == 200 && _email != "") {
-      print('Response status: ${response.statusCode}');
-      print('Response body: ${response.body}');
-      print('Response headers: ${response.headers}');
-      print('Response headers cookie: ${response.headers['set-cookie']}');
-      String _cookie = response.headers['set-cookie'];
-      print(
-          'Response headers set-cookie sessionid: ${_cookie.substring(0, _cookie.indexOf(';'))}');
-      _sessionId = _cookie.substring(0, _cookie.indexOf(';'));
 
-      UserData _user = UserData(_email, _sessionId);
+    String _cookie = response.headers['set-cookie'];
 
-      print(_user._email);
-      Navigator.of(context).pushNamed("/verification", arguments: _user);
-    } else {
-      print("ERROR");
-    }
+    _sessionId = _cookie.substring(0, _cookie.indexOf(';'));
   }
 }
 
@@ -258,7 +258,8 @@ class Book extends CustomPainter {
   }
 
   void paint_lines(Canvas canvas, Size size, double y) {
-    Paint line_painter = Paint()..color = hexToColor('#DADBDC');
+    Paint line_painter = Paint()
+      ..color = hexToColor('#DADBDC');
     var path_line_1 = Path();
     path_line_1.moveTo(20, 0 + y);
     path_line_1.cubicTo(35, 10 + y, 45, -8 + y, 65, 0 + y);
