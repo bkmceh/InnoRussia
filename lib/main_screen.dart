@@ -1,8 +1,6 @@
 import 'package:flutter/material.dart';
 
-import 'MainSreens/menu.dart';
-import 'MainSreens/settings.dart';
-import 'MainSreens/vocabulary.dart';
+
 
 
 class MainNavigation extends StatefulWidget {
@@ -14,15 +12,15 @@ class _MainNavigationState extends State<MainNavigation> {
   int _currentIndex = 0;
 
   final tabsScreens = [
-    Menu(),
-    Vocabulary(),
-    Settings()
+    // Menu(),
+    // Vocabulary(),
+    // Settings()
   ];
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: tabsScreens[_currentIndex],
+      // body: tabsScreens[_currentIndex],
       bottomNavigationBar: BottomNavigationBar(
         currentIndex: _currentIndex,
         items: [
