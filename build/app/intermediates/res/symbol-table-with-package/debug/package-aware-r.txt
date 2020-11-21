@@ -11,6 +11,7 @@ attr fontStyle
 attr fontVariationSettings
 attr fontWeight
 attr ttcIndex
+color background
 color notification_action_color_filter
 color notification_icon_bg_color
 color ripple_material_light
@@ -37,6 +38,7 @@ dimen notification_small_icon_size_as_large
 dimen notification_subtext_size
 dimen notification_top_pad
 dimen notification_top_pad_large_text
+drawable book
 drawable launch_background
 drawable notification_action_background
 drawable notification_bg

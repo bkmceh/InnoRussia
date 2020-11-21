@@ -1,7 +1,13 @@
 import 'dart:convert';
 import 'package:flutter/material.dart';
 import 'package:flutter_verification_code/flutter_verification_code.dart';
-import 'package:inno_russian/main_screen.dart';
+//import 'package:inno_russian/main_screen.dart';
+import 'package:inno_russian/sign_in.dart';
+import 'package:http/http.dart' as http;
+import 'package:inno_russian/state.dart';
+import 'dart:convert';
+import 'package:flutter/material.dart';
+import 'package:flutter_verification_code/flutter_verification_code.dart';
 import 'package:inno_russian/sign_in.dart';
 import 'package:http/http.dart' as http;
 import 'package:inno_russian/state.dart';
@@ -101,7 +107,7 @@ class _VerificationState extends State<Verification> {
                               style: TextStyle(color: Colors.red, fontSize: 20),
                             );
                           } else {
-                            goToMainPage();
+                            //goToMainPage();
                             return Text(
                               'Confirmed',
                               style:
@@ -158,8 +164,8 @@ class _VerificationState extends State<Verification> {
     return stateData;
   }
 
-  void goToMainPage() async {
+  /*void goToMainPage() async {
     Navigator.of(context).pushReplacement(
         MaterialPageRoute(builder: (context) => MainNavigation()));
-  }
+  }*/
 }
