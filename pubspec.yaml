@@ -36,6 +36,7 @@ dependencies:
   email_validator: '^1.0.5'
   flutter_svg: ^0.19.1
   loading_animations: ^2.1.0
+  audioplayers: ^0.15.0
 
 dev_dependencies:
   flutter_test:

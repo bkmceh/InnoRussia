@@ -5,6 +5,7 @@ INJECTED from D:\Desktop\gitHub\mainmenu\InnoRussian\android\app\src\main\Androi
 INJECTED from D:\Desktop\gitHub\mainmenu\InnoRussian\android\app\src\main\AndroidManifest.xml:1:1-47:12
 INJECTED from D:\Desktop\gitHub\mainmenu\InnoRussian\android\app\src\main\AndroidManifest.xml:1:1-47:12
 MERGED from D:\Desktop\gitHub\mainmenu\InnoRussian\android\app\src\main\AndroidManifest.xml:1:1-47:12
+MERGED from [:audioplayers] D:\Desktop\gitHub\mainmenu\InnoRussian\build\audioplayers\intermediates\library_manifest\debug\AndroidManifest.xml:2:1-9:12
 MERGED from [:sqflite] D:\Desktop\gitHub\mainmenu\InnoRussian\build\sqflite\intermediates\library_manifest\debug\AndroidManifest.xml:2:1-7:12
 MERGED from [:path_provider] D:\Desktop\gitHub\mainmenu\InnoRussian\build\path_provider\intermediates\library_manifest\debug\AndroidManifest.xml:2:1-7:12
 MERGED from [androidx.fragment:fragment:1.1.0] C:\Users\inforest\.gradle\caches\transforms-2\files-2.1\0986d0d74b8a2c7da8161f6370fc7744\fragment-1.1.0\AndroidManifest.xml:17:1-24:12
@@ -97,6 +98,8 @@ uses-sdk
 INJECTED from D:\Desktop\gitHub\mainmenu\InnoRussian\android\app\src\main\AndroidManifest.xml reason: use-sdk injection requested
 INJECTED from D:\Desktop\gitHub\mainmenu\InnoRussian\android\app\src\main\AndroidManifest.xml
 INJECTED from D:\Desktop\gitHub\mainmenu\InnoRussian\android\app\src\main\AndroidManifest.xml
+MERGED from [:audioplayers] D:\Desktop\gitHub\mainmenu\InnoRussian\build\audioplayers\intermediates\library_manifest\debug\AndroidManifest.xml:7:5-44
+MERGED from [:audioplayers] D:\Desktop\gitHub\mainmenu\InnoRussian\build\audioplayers\intermediates\library_manifest\debug\AndroidManifest.xml:7:5-44
 MERGED from [:sqflite] D:\Desktop\gitHub\mainmenu\InnoRussian\build\sqflite\intermediates\library_manifest\debug\AndroidManifest.xml:5:5-44
 MERGED from [:sqflite] D:\Desktop\gitHub\mainmenu\InnoRussian\build\sqflite\intermediates\library_manifest\debug\AndroidManifest.xml:5:5-44
 MERGED from [:path_provider] D:\Desktop\gitHub\mainmenu\InnoRussian\build\path_provider\intermediates\library_manifest\debug\AndroidManifest.xml:5:5-44

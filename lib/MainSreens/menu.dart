@@ -5,6 +5,7 @@ import 'dart:convert';
 import 'package:http/http.dart' as http;
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:inno_russian/MainSreens/words.dart';
+import 'package:audioplayers/audioplayers.dart';
 
 String access_token =
     'access_token="JWT eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ1c2VyX2lkIjo0LCJleHAiOjE2MjE0NTA1MzUsImlhdCI6MTYwNTg5ODIzNX0.ebCpbKouFtKidcQs-Cwxm9eP8aUEcSthFUjJ6nWKd3Q"';
@@ -363,6 +364,8 @@ class WordsOfCategory extends StatefulWidget {
 }
 
 class _WordsOfCategoryState extends State<WordsOfCategory> {
+  AudioPlayer audioPlayer = new AudioPlayer();
+
   String wordUrl =
       'https://intense-meadow-04093.herokuapp.com/api/v1.0/data/words/';
 
@@ -453,12 +456,63 @@ class _WordsOfCategoryState extends State<WordsOfCategory> {
                   delegate: SliverChildBuilderDelegate(
                     (BuildContext context, int index) {
                       return Container(
+                        height: MediaQuery.of(context).size.height * 0.17,
+                        color: hexToColor("#FFFFFF"),
                         alignment: Alignment.center,
-                        color: hexToColor("#796CBE"),
-                        height: MediaQuery.of(context).size.height / 5,
-                        child: Text(
-                          '${words.wordsList[index]['description']}',
-                          style: TextStyle(color: Colors.white, fontSize: 28),
+                        child: Container(
+                          decoration: BoxDecoration(
+                              color: hexToColor("#796CBE"),
+                              borderRadius: BorderRadius.all(
+                                Radius.circular(20),
+                              ),
+                              boxShadow: [
+                                BoxShadow(
+                                  color: Colors.black.withOpacity(0.3),
+                                  spreadRadius: 1,
+                                  blurRadius: 3,
+                                  offset: Offset(0, 5),
+                                )
+                              ]),
+                          alignment: Alignment.topCenter,
+                          //color: hexToColor("#796CBE"),
+                          width: MediaQuery.of(context).size.width * 0.95,
+                          height:
+                              MediaQuery.of(context).size.height * 0.17 - 15,
+                          //padding: EdgeInsets.only(top: 40),
+                          child: Row(
+                            children: [
+                              Container(
+                                  width: MediaQuery.of(context).size.width *
+                                      0.95 *
+                                      0.85,
+                                  child: Padding(
+                                    padding: EdgeInsets.only(left: 10),
+                                    child: Text(
+                                      '${words.wordsList[index]['description']}',
+                                      style: TextStyle(
+                                          color: Colors.white, fontSize: 26),
+                                      textAlign: TextAlign.left,
+                                    ),
+                                  )),
+                              Container(
+                                alignment: Alignment.bottomCenter,
+                                width: MediaQuery.of(context).size.width *
+                                    0.95 *
+                                    0.15,
+                                child: Column(
+                                  children: [
+                                    IconButton(
+                                      icon: Icon(Icons.bookmark),
+                                    ),
+                                    IconButton(
+                                      icon: Icon(Icons.volume_up),
+                                      onPressed: () => playLocal(index),
+                                    )
+                                  ],
+                                ),
+                              )
+                            ],
+                          ),
                         ),
                       );
                     },
@@ -478,5 +532,16 @@ class _WordsOfCategoryState extends State<WordsOfCategory> {
     print(decodeJson['words']);
     Words words = Words.fromMappedJson(decodeJson);
     return words;
+  }
+
+  playLocal(int index) async {
+    var url = "https://intense-meadow-04093.herokuapp.com" +
+        words.wordsList[index]['file'];
+
+    int result = await audioPlayer.play(url, isLocal: false);
+    if (result == 1) {
+      // success
+    }
+    //int result = await audioPlayer.play(, isLocal: true);
   }
 }
