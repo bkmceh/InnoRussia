@@ -9,9 +9,11 @@ class _VocabularyState extends State<Vocabulary> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: Center(child: Text("Your Vocabulary", style: TextStyle(
-        fontSize: 35
-      ),)),
+      body: Center(
+          child: Text(
+        "Your Vocabulary",
+        style: TextStyle(fontSize: 35),
+      )),
     );
   }
 }

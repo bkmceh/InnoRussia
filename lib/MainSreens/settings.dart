@@ -9,9 +9,11 @@ class _SettingsState extends State<Settings> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: Center(child: Text("Your Settings", style: TextStyle(
-        fontSize: 35
-      ),)),
+      body: Center(
+          child: Text(
+        "Your Settings",
+        style: TextStyle(fontSize: 35),
+      )),
     );
   }
 }
