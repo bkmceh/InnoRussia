@@ -1,4 +1,4 @@
-#Sat Nov 21 17:40:47 MSK 2020
-base.0=C\:\\Users\\Dinislam\\InnoRussian1\\build\\app\\intermediates\\dex\\debug\\mergeDexDebug\\out\\classes.dex
+#Sun Nov 22 02:54:46 MSK 2020
+base.0=D\:\\Desktop\\gitHub\\full\\InnoRussian\\build\\app\\intermediates\\dex\\debug\\mergeDexDebug\\out\\classes.dex
 path.0=classes.dex
 renamed.0=classes.dex
