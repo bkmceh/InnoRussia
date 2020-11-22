@@ -1,7 +1,16 @@
 import 'dart:convert';
 import 'package:flutter/material.dart';
 import 'package:flutter_verification_code/flutter_verification_code.dart';
+import 'package:inno_russian/MainSreens/menu.dart';
 import 'package:inno_russian/main_screen.dart';
+
+//import 'package:inno_russian/main_screen.dart';
+import 'package:inno_russian/sign_in.dart';
+import 'package:http/http.dart' as http;
+import 'package:inno_russian/state.dart';
+import 'dart:convert';
+import 'package:flutter/material.dart';
+import 'package:flutter_verification_code/flutter_verification_code.dart';
 import 'package:inno_russian/sign_in.dart';
 import 'package:http/http.dart' as http;
 import 'package:inno_russian/state.dart';
@@ -91,28 +100,28 @@ class _VerificationState extends State<Verification> {
               child: _onEditing
                   ? Text('Please enter full code')
                   : FutureBuilder<StateData>(
-                      future: _sendDataToServer(),
-                      builder: (context, snapshot) {
-                        if (snapshot.hasData) {
-                          stateData = snapshot.data;
-                          if (stateData.status == 0) {
-                            return Text(
-                              'Incorrect code try again!',
-                              style: TextStyle(color: Colors.red, fontSize: 20),
-                            );
-                          } else {
-                            goToMainPage();
-                            return Text(
-                              'Confirmed',
-                              style:
-                                  TextStyle(color: Colors.green, fontSize: 20),
-                            );
-                          }
-                        } else {
-                          return Text('wating...');
-                        }
-                      },
-                    ),
+                future: _sendDataToServer(),
+                builder: (context, snapshot) {
+                  if (snapshot.hasData) {
+                    stateData = snapshot.data;
+                    if (stateData.status == 0) {
+                      return Text(
+                        'Incorrect code try again!',
+                        style: TextStyle(color: Colors.red, fontSize: 20),
+                      );
+                    } else {
+                      goToMainPage();
+                      return Text(
+                        'Confirmed',
+                        style:
+                        TextStyle(color: Colors.green, fontSize: 20),
+                      );
+                    }
+                  } else {
+                    return Text('wating...');
+                  }
+                },
+              ),
             ),
           ),
           SizedBox(
@@ -159,7 +168,12 @@ class _VerificationState extends State<Verification> {
   }
 
   void goToMainPage() async {
-    Navigator.of(context).pushReplacement(
-        MaterialPageRoute(builder: (context) => MainNavigation()));
+    WidgetsBinding.instance.addPostFrameCallback((_) {
+      Navigator.of(context).pushReplacement(
+          MaterialPageRoute(
+              builder: (context) => MainNavigation(stateData.access_token)));
+    });
   }
+
+
 }
